@@ -1,14 +1,12 @@
-package tests
+package geohash
 
 import (
 	"testing"
-
-	"github.com/Olian04/go-geohash/geohash"
 )
 
 func TestFromString(t *testing.T) {
 	hash := "ekekekekekek"
-	geohash, err := geohash.FromString(hash)
+	geohash, err := FromString(hash)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -19,7 +17,7 @@ func TestFromString(t *testing.T) {
 
 func TestReduceAccuracy(t *testing.T) {
 	hash := "ekekekekekek"
-	geohash, err := geohash.FromString(hash)
+	geohash, err := FromString(hash)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -33,13 +31,13 @@ func TestReduceAccuracy(t *testing.T) {
 	}
 }
 
-func TestExpandAccuracy(t *testing.T) {
+func TestIncreaseAccuracy(t *testing.T) {
 	hash := "ekekekekeke"
-	geohash, err := geohash.FromString(hash)
+	geohash, err := FromString(hash)
 	if err != nil {
 		t.Fatal(err)
 	}
-	expanded, err := geohash.ExpandAccuracy("k")
+	expanded, err := geohash.IncreaseAccuracy("k")
 	if err != nil {
 		t.Fatal(err)
 	}

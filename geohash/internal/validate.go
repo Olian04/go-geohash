@@ -1,4 +1,4 @@
-package lib
+package internal
 
 func ValidateAlphabet(geohash string) bool {
 	for _, c := range geohash {

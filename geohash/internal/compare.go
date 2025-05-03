@@ -1,4 +1,4 @@
-package lib
+package internal
 
 var distancePerCharacterInMeters = map[int]float64{
 	0:  20_000_000,
@@ -34,12 +34,8 @@ var distancePerCharacterInMeters = map[int]float64{
 //	11: 0.09
 //	12: 0.02
 func ApproximateDistance(hash1 string, hash2 string) float64 {
-	matchingLength := equalityLength(hash1, hash2)
+	matchingLength := EqualityLength(hash1, hash2)
 	return distancePerCharacterInMeters[matchingLength]
-}
-
-func EqualityScore(hash1 string, hash2 string) int {
-	return equalityLength(hash1, hash2)
 }
 
 // Accuracy returns the accuracy of the geohash in meters
@@ -47,8 +43,8 @@ func Accuracy(hash string) float64 {
 	return distancePerCharacterInMeters[len(hash)]
 }
 
-// equalityLength returns the length of the subset of the two hashes that are the same
-func equalityLength(hash1 string, hash2 string) int {
+// EqualityLength returns the length of the subset of the two hashes that are the same
+func EqualityLength(hash1 string, hash2 string) int {
 	minLength := min(len(hash1), len(hash2))
 	matchingLength := 0
 	for i := 0; i < minLength; i++ {

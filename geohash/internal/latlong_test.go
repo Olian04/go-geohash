@@ -1,14 +1,13 @@
-package tests
+package internal
 
 import (
 	"testing"
 
-	"github.com/Olian04/go-geohash/geohash/lib"
 	"gonum.org/v1/gonum/floats"
 )
 
 func TestToLatLong(t *testing.T) {
-	lat, long, err := lib.ToLatLong("ekekekekekek")
+	lat, long, err := ToLatLong("ekekekekekek")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -20,7 +19,7 @@ func TestToLatLong(t *testing.T) {
 }
 
 func TestFromLatLong(t *testing.T) {
-	hash := lib.FromLatLong(26.12903223, -29.03225804)
+	hash := FromLatLong(26.12903223, -29.03225804)
 	expectedHash := "ekekekekekek"
 	if hash != expectedHash {
 		t.Errorf("Expected hash: %s, but got hash: %s", expectedHash, hash)

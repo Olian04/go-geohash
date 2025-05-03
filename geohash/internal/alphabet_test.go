@@ -1,14 +1,12 @@
-package tests
+package internal
 
 import (
 	"testing"
-
-	"github.com/Olian04/go-geohash/geohash/lib"
 )
 
 func TestDecode(t *testing.T) {
-	for index, c := range lib.Base32ghs {
-		i, err := lib.Decode(c)
+	for index, c := range Base32ghs {
+		i, err := Decode(c)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -19,8 +17,8 @@ func TestDecode(t *testing.T) {
 }
 
 func TestEncode(t *testing.T) {
-	for index, c := range lib.Base32ghs {
-		r, err := lib.Encode(index)
+	for index, c := range Base32ghs {
+		r, err := Encode(index)
 		if err != nil {
 			t.Fatal(err)
 		}
